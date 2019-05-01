@@ -1,11 +1,13 @@
-<% if @errors %>
- <%= @errors.each do |error| %>
-  <%= error %>
- <% end  %>
-<% end %>
+<ul>
+  <% if @errors %>
+   <%= @errors.each do |error| %>
+    <li><%= error %></li>
+   <% end  %>
+  <% end %>
+</ul>
 
-<h2>Editing "<%= @post.title %>"</h2>
-<%= form_tag posts_path, method: "patch" do %>
+<h2>New Post: <%= @post.title %></h2>
+<%= form_tag posts_path, method: "post" do %>
   <div class="field">
     <%= label_tag "title", "Title" %>
     <%= text_field_tag "title", @post.title %>
