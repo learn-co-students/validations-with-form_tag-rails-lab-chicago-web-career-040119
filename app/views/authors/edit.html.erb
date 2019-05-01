@@ -1,5 +1,5 @@
-<h2>Create an Author</h2>
-<%= form_tag authors_path, method: "post" do %>
+<h2>Editing "<%= @author.name %>"</h2>
+<%= form_tag author_path(@author), method: "patch" do %>
 
   <% if @author.errors.any? %>
     <div id="error_explanation">
@@ -21,12 +21,16 @@
   <div class="field<%= ' field_with_errors' if @author.errors[:email].any? %>">
     <%= label_tag "email", "Email" %>
     <%= text_field_tag "email", @author.email %>
+    <p>
+      Please type carefully as our top scientists are working around the clock to
+      enable state-of-the-art dropdown technology for this form field.
+    </p>
   </div>
 
   <div class="field<%= ' field_with_errors' if @author.errors[:phone_number].any? %>">
     <%= label_tag "phone_number", "Phone Number" %>
-    <%= text_field_tag "phone_number", @author.phone_number %>
+    <br />
+    <%= text_area_tag "phone_number", @author.phone_number %>
   </div>
-
-  <%= submit_tag "Create" %>
+  <%= submit_tag "Update" %>
 <% end %>
